@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<title>Exercise 5</title>
+	<style>
+		.btn{
+			background-color: #e5e5e5;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p id="chapter1"><strong>Chapter 1. </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pulvinar placerat sagittis. Vivamus fermentum vel urna vel porta. Curabitur tincidunt malesuada sapien, eu faucibus diam elementum sed. Cras at ipsum erat. Mauris ac purus libero. Quisque vel ultricies odio. Mauris varius fermentum mauris nec aliquet. In malesuada, nulla et tincidunt varius, massa elit viverra massa, non viverra velit sapien sed ligula. Duis egestas sodales libero, ut interdum dolor.</p>
+		<p id="chapter2"><strong>Chapter 2. </strong>Donec ac molestie purus, eu volutpat urna. Curabitur quis enim fermentum, interdum mauris vel, pulvinar dui. Nam condimentum volutpat risus, rutrum malesuada ipsum. Donec mollis facilisis molestie. Aenean consequat cursus laoreet. Vivamus accumsan enim sit amet mauris efficitur, ac gravida quam viverra. Aliquam pharetra velit orci, non laoreet ante molestie in. Aenean ornare varius ante ac sagittis. Mauris eget laoreet felis, ut aliquam odio.</p>
+		<button id="toggle" class="btn">Toggle Chapter 1</button>
+		<button id="fade-out" class="btn">Fade out both</button>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#toggle").click(function(){
+				$("#chapter1").toggle();
+			})
+			$("#fade-out").click(function(){
+				$("#chapter1").fadeOut("slow");
+				$("#chapter2").fadeOut("slow");
+			})
+		})
+	</script>
+</body>
+</html>

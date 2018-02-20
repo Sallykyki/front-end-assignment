@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<title>Calculator</title>
+	<style>
+		p{
+			background-color: #bfeeeb;
+			color: #7eaec0;
+			height: 50px;
+			width: 120px;
+			border-radius: 5px;
+			padding: 10px;
+		}
+		button{
+			background-color: #808080;
+			color: #fff;
+		}
+		.btn{
+			z-index: 1;
+		}
+		.btn:focus{
+			 box-shadow: 0 0 0 0.2rem #e5e5e5;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>Result<span class="result"></span></p>
+		<div class="row">
+			<div class="col">
+				<input name="inputNumber1" id="number1" class="form-control" placeholder="Enter a number">
+			</div>
+			<div class="col">
+				<input name="inputNumber2" id="number2" class="form-control" placeholder="Enter a number">
+			</div>
+		</div>
+	<br>
+		<div class="btn-group">
+			<button type="button" id="plus" class="btn">+</button>
+			<button type="button" id="minus" class="btn">-</button>
+		</div>
+	</div>
+<script>
+	$(document).ready(function(){
+		var number1, number2;
+
+		$("#plus").click(function(){
+	    	getValue();
+			$(".result").text(" = " + (Number(number1) + Number(number2)));
+		})
+		$("#minus").click(function(){
+	    	getValue();
+			$(".result").text(" = " + (Number(number1) - Number(number2)));
+		})
+
+		function getValue(){
+			number1 = $("#number1").val();
+			number2 = $("#number2").val();
+		}
+	});
+	
+</script>	
+</body>
+</html>
