@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 2</title>
+</head>
+
+<body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+    class WeatherMap extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {temperature:'',weather:'', icon:''};
+        }
+        componentDidMount(){
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=Espoo&units=metric&APPID=37e3320c641be74df7e475b411ab6a24')
+            .then((respone) => respone.json())
+            .then((responeData)=> {
+                this.setState({
+                    temperature: responeData.main.temp,
+                    weather: responeData.weather[0].description,
+                    icon: responeData.weather[0].icon
+                });
+            })
+        }
+        render(){
+            var iconUrl = "http://openweathermap.org/img/w/" + this.state.icon + ".png";
+            return (
+                <div>
+                    <div>Temperature: {this.state.temperature} Celsius</div>
+                    <div>Weather: {this.state.weather}</div>
+                    <div><img src={iconUrl}/></div>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<WeatherMap />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
