@@ -16,7 +16,12 @@ class App extends Component {
       ]
     });
   };
-
+  deletePressed = index => () => {
+    const newTodos = this.state.todos.filter((todo, i) => i !== index);
+    this.setState({
+      todos: newTodos
+    });
+  };
   inputChanged = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -25,8 +30,11 @@ class App extends Component {
   render() {
     const listItems = this.state.todos.map((todo, index) => (
       <tr key={index}>
-        <td>{todo.description}</td>
         <td>{todo.date}</td>
+        <td>{todo.description}</td>
+        <td>
+          <button onClick={this.deletePressed(index)}>Delete</button>
+        </td>
       </tr>
     ));
     return (
@@ -58,8 +66,8 @@ class App extends Component {
           <table>
             <tbody>
               <tr>
-                <th>Description</th>
                 <th>Date</th>
+                <th>Description</th>
               </tr>
               {listItems}
             </tbody>
