@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import TodoTable from "./TodoTable";
 
 class App extends Component {
   constructor(props) {
@@ -16,27 +17,21 @@ class App extends Component {
       ]
     });
   };
+
+  inputChanged = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
   deletePressed = index => () => {
     const newTodos = this.state.todos.filter((todo, i) => i !== index);
     this.setState({
       todos: newTodos
     });
   };
-  inputChanged = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+
   render() {
-    const listItems = this.state.todos.map((todo, index) => (
-      <tr key={index}>
-        <td>{todo.date}</td>
-        <td>{todo.description}</td>
-        <td>
-          <button onClick={this.deletePressed(index)}>Delete</button>
-        </td>
-      </tr>
-    ));
     return (
       <div className="App">
         <header className="App-header">
@@ -63,15 +58,11 @@ class App extends Component {
           </fieldset>
         </form>
         <div>
-          <table>
-            <tbody>
-              <tr>
-                <th>Date</th>
-                <th>Description</th>
-              </tr>
-              {listItems}
-            </tbody>
-          </table>
+          <button onClick={this.deletePressed(0)}>Hellos</button>
+          <TodoTable
+            todos={this.state.todos}
+            deletePressed={this.deletePressed}
+          />
         </div>
       </div>
     );
